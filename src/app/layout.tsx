@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
+const openSansItalic = localFont({
+  src: "./fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf",
+  variable: "--font-openSans-italic",
   weight: "100 900",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
+
+const openSans = localFont({
+  src: "./fonts/OpenSans-VariableFont_wdth,wght.ttf",
+  variable: "--font-openSans",
   weight: "100 900",
+});
+
+const firaCode = localFont({
+  src: "./fonts/FiraCode-VariableFont_wght.ttf",
+  variable: "--font-firaCode",
+  weight: "300 700",
 });
 
 export const metadata: Metadata = {
@@ -26,9 +35,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`antialiased min-h-screen bg-background ${openSans.variable} 
+        ${firaCode.variable} 
+        ${openSansItalic.variable} `}
       >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
