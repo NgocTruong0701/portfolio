@@ -1,5 +1,7 @@
 'use client'
 import Typewriter from 'typewriter-effect';
+import SnakeGame from './components/game/SnakeGame';
+// import { SnakeGame } from './components/game/SnakeGame';
 
 export default function Home() {
   return (
@@ -68,7 +70,7 @@ export default function Home() {
         </div>
       </div>
       <div>
-
+        <SnakeGame />
       </div>
     </main>
   );
