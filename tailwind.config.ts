@@ -22,6 +22,7 @@ const config: Config = {
           '2': '#3C9D93',  // Teal
           '3': '#4D5BCE',  // Purple blue
           '4': '#FFFFFF',  // White
+          '5': '#01080E',
         },
         // Accent colors
         'accent': {
@@ -36,6 +37,7 @@ const config: Config = {
         'gradient': {
           'blue': '#4D5BCE',
           'green': '#43D9AD',
+          'deep-teal': '#175553',
         }
       },
       fontFamily: {

@@ -1,11 +1,11 @@
 'use client'
-import { CanvasPostion, Direction, DIRECTIONS, GAME_SPEED, GRID_SIZE, INITIAL_FOOD_POSITION, INITIAL_SNAKE_POSITION } from '@/app/constants/snakeGame';
+import { CANVAS_HEIGHT, CANVAS_WIDTH, CanvasPosition, CELL_SIZE, Direction, DIRECTIONS, GAME_SPEED, GRID_COLS, GRID_ROWS, INITIAL_FOOD_POSITION, INITIAL_SNAKE_POSITION } from '@/app/constants/snakeGame';
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function SnakeGame() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const [snake, setSnake] = useState<CanvasPostion[]>([{ x: 10, y: 10 }]);
-    const [food, setFood] = useState<CanvasPostion>({ x: 15, y: 15 });
+    const [snake, setSnake] = useState<CanvasPosition[]>(INITIAL_SNAKE_POSITION);
+    const [food, setFood] = useState<CanvasPosition>(INITIAL_FOOD_POSITION);
     const [direction, setDirection] = useState<Direction>(DIRECTIONS.RIGHT);
     const [gameOver, setGameOver] = useState(false);
     const [score, setScore] = useState(0);
@@ -13,13 +13,13 @@ export default function SnakeGame() {
 
     // Generate random food postition
     const generateFood = () => {
-        let newFood: CanvasPostion;
+        let newFood: CanvasPosition;
         let isOnSnake;
 
         do {
             newFood = {
-                x: Math.floor(Math.random() * 20),
-                y: Math.floor(Math.random() * 20)
+                x: Math.floor(Math.random() * GRID_COLS),
+                y: Math.floor(Math.random() * GRID_ROWS)
             };
 
             isOnSnake = snake.some(segment =>
@@ -65,7 +65,7 @@ export default function SnakeGame() {
                 }
 
                 // Check wall collision
-                if (head.x < 0 || head.x >= GRID_SIZE || head.y < 0 || head.y >= GRID_SIZE) {
+                if (head.x < 0 || head.x >= GRID_COLS || head.y < 0 || head.y >= GRID_ROWS) {
                     setGameOver(true);
                     setIsPlaying(false);
                     return currentSnake;
@@ -103,31 +103,62 @@ export default function SnakeGame() {
 
         const drawGame = () => {
             // Clear canvas
-            context.fillStyle = '#1a1a1a';
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.fillStyle = 'rgba(1, 22, 39, 0.84)';
             context.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Draw grid
-            context.strokeStyle = '#333';
-            for (let i = 0; i < GRID_SIZE; i++) {
-                context.beginPath();
-                context.moveTo(i * 20, 0);
-                context.lineTo(i * 20, 400);
-                context.stroke();
-                context.beginPath();
-                context.moveTo(0, i * 20);
-                context.lineTo(400, i * 20);
-                context.stroke();
-            };
+            // // Draw grid
+            // context.strokeStyle = '#333';
+            // // draw cols
+            // for (let i = 0; i <= GRID_COLS; i++) {
+            //     context.beginPath();
+            //     context.moveTo(i * CELL_SIZE, 0);
+            //     context.lineTo(i * CELL_SIZE, CANVAS_HEIGHT);
+            //     context.stroke();
+            // }
+            // // draw cels
+            // for (let i = 0; i <= GRID_ROWS; i++) {
+            //     context.beginPath();
+            //     context.moveTo(0, i * CELL_SIZE);
+            //     context.lineTo(CANVAS_WIDTH, i * CELL_SIZE);
+            //     context.stroke();
+            // }
 
-            // Draw food
-            context.fillStyle = '#22c55e';
-            context.fillRect(food.x * GRID_SIZE, food.y * GRID_SIZE, GRID_SIZE, GRID_SIZE);
+            // 2. Reset context state
+            context.globalAlpha = 1;
+            context.shadowColor = 'none';
+            context.shadowBlur = 0;
 
-            // Draw snake
+            // 3. Draw snake
             snake.forEach((part, index) => {
-                context.fillStyle = index === 0 ? '#60a5fa' : '#3b82f6';
-                context.fillRect(part.x * GRID_SIZE, part.y * GRID_SIZE, GRID_SIZE, GRID_SIZE);
+                const opacity = 1 - (index / (snake.length - 1)) * 0.9;
+                const color = index === 0 ? '#43D9AD' : `rgba(67, 217, 173, ${opacity})`;
+                context.fillStyle = color;
+                context.beginPath();
+                context.roundRect(
+                    part.x * CELL_SIZE,
+                    part.y * CELL_SIZE,
+                    CELL_SIZE,
+                    CELL_SIZE,
+                    8
+                );
+                context.fill();
             });
+
+            // 4. Draw food - với state mới hoàn toàn
+            context.save();
+            const centerX = food.x * CELL_SIZE + CELL_SIZE / 2; // need multi with size 1 cell to convert grid coordinates (x,y) to canvas pixel coordinates (x * CELL_SIZE, y * CELL_SIZE)
+            const centerY = food.y * CELL_SIZE + CELL_SIZE / 2;
+            const radius = CELL_SIZE / 3;
+
+            // Vẽ food với state mới
+            context.fillStyle = '#FF5370';
+            context.shadowColor = '#FF5370';
+            context.shadowBlur = 15;
+            context.beginPath();
+            context.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            context.fill();
+            context.restore();
         };
 
         drawGame();
@@ -161,17 +192,23 @@ export default function SnakeGame() {
     }, [direction, isPlaying]);
 
     return (
-        <div className="flex flex-col items-center justify-center bg-gradient-to-r from-blue-900 to-green-900 p-4 rounded-lg">
-            <div className="mb-4 text-xl font-bold text-white">Score: {score}</div>
-            <canvas ref={canvasRef} width="400" height="400" className="border-4 border-gray-800"></canvas>
-            <button
-                onClick={resetGame}
-                className="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded transition-colors"
-            >
-                {isPlaying ? 'Restart Game' : 'Start Game'}
-            </button>
-            {gameOver && <p className="text-red-500 mt-2 font-bold">Game Over!</p>}
-            <p className="text-gray-300 mt-4">Use arrow keys to play</p>
+        <div className="flex items-center justify-between h-max bg-gradient-to-r from-gradient-deep-teal/70 to-gradient-green/70 rounded-lg p-5 font-firaCode">
+            <div className='pr-6 relative'>
+                <canvas ref={canvasRef} width={CANVAS_WIDTH} height={CANVAS_HEIGHT} className="rounded-lg shadow-xl shadow-black/30"></canvas>
+                {!isPlaying && (<div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+                    <button
+                        onClick={resetGame}
+                        className="mt-4 bg-accent-1 hover:bg-orange-600 text-secondary-5 px-4 py-2 rounded-lg transition-colors }"
+                    >
+                        {gameOver ? 'Restart Game' : 'Start Game'}
+                    </button>
+                </div>)}
+            </div>
+            <div>
+                <div className="mb-4 text-xl font-bold text-white">Score: {score}</div>
+                {gameOver && <p className="text-red-500 mt-2 font-bold">Game Over!</p>}
+                <p className="text-gray-300 mt-4">Use arrow keys to play</p>
+            </div>
         </div>
     );
 }
