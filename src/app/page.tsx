@@ -1,8 +1,75 @@
-import Image from "next/image";
+'use client'
+import Typewriter from 'typewriter-effect';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-    </div>
+    <main className="flex-1 flex justify-between items-center p-8">
+      <div className="font-firaCode">
+        <div className="text-link">
+          <div className="text-lg">
+            <Typewriter
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString('Hi all 👋. I am')
+                  .start();
+              }}
+              options={{
+                loop: false,
+                autoStart: true,
+              }}
+            />
+          </div>
+          <div className="text-3xl">
+            <Typewriter
+              onInit={(typewriter) => {
+                typewriter
+                  .pauseFor(2500)
+                  .typeString('Le Ngoc Truong')
+                  .start();
+              }}
+              options={{
+                loop: false,
+                autoStart: true,
+              }}
+            />
+          </div>
+          <div className="text-secondary-3 text-xl">
+            <Typewriter
+              onInit={(typewriter) => {
+                typewriter
+                  .pauseFor(5000)
+                  .typeString('> Software Developer')
+                  .pauseFor(1500)
+                  .deleteAll()
+                  .typeString('> Backend Developer')
+                  .pauseFor(1500)
+                  .deleteAll()
+                  .typeString('> Frontend Developer')
+                  .pauseFor(1500)
+                  .deleteAll()
+                  .start();
+              }}
+              options={{
+                loop: true,
+                autoStart: true,
+              }}
+            />
+          </div>
+        </div>
+        <div className="mt-8 text-secondary-1">
+          <div>// complete the game to continue</div>
+          <div>// you can also see it on my Github page</div>
+          <div>
+            <span className="text-secondary-3">const </span>
+            <span className="text-accent-2">githubLink </span>
+            <span className="text-secondary-4">= </span>
+            <span className="text-accent-3">"https://github.com/your-username"</span>
+          </div>
+        </div>
+      </div>
+      <div>
+
+      </div>
+    </main>
   );
 }

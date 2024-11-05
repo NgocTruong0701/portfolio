@@ -42,6 +42,19 @@ const config: Config = {
         openSansItalic: ['var(--font-openSans-italic)'],
         openSans: ['var(--font-openSans)'],
         firaCode: ['var(--font-firaCode)'],
+      },
+      animation: {
+        'typing': 'typing 2s steps(20, end)',
+        'blink': 'blink .7s step-end infinite',
+      },
+      keyframes: {
+        typing: {
+          '0%': { width: '0' },
+          '50%, 100%': { width: '100%' }
+        },
+        blink: {
+          '50%': { 'border-color': 'transparent' }
+        }
       }
     },
   },
