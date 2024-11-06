@@ -1,6 +1,6 @@
 'use client'
 import { CANVAS_HEIGHT, CANVAS_WIDTH, CanvasPosition, CELL_SIZE, Direction, DIRECTIONS, GAME_SPEED, GameState, GRID_COLS, GRID_ROWS, INITIAL_FOOD_POSITION, INITIAL_SNAKE_POSITION } from '@/constants/snakeGame';
-import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Icon from '../icons';
 
 export default function SnakeGame() {
@@ -35,7 +35,7 @@ export default function SnakeGame() {
     //     return newFood;
     // };
 
-    const generateFood = () => {
+    const generateFood = (currentSnake: CanvasPosition[]) => {
         // Create array of all possible positions
         const allPositions: CanvasPosition[] = [];
         for (let x = 0; x < GRID_COLS; x++) {
@@ -46,7 +46,7 @@ export default function SnakeGame() {
 
         // Filter out positions occupied by snake
         const availablePositions = allPositions.filter(pos =>
-            !gameState.snake.some(segment =>
+            !currentSnake.some(segment =>
                 segment.x === pos.x && segment.y === pos.y
             )
         );
@@ -71,14 +71,14 @@ export default function SnakeGame() {
     }
 
     // Handle skip
-    const skipHandler = () => {
+    const skipHandler = useCallback(() => {
         if (!gameOver) {
             setIsDone(true);
             setIsFirstTime(false);
             setIsPlaying(false);
             setGameOver(true);
         }
-    }
+    }, [gameOver]);
 
     // Main game loop
     const moveSnake = useCallback(() => {
@@ -119,7 +119,7 @@ export default function SnakeGame() {
 
                 return {
                     snake: [head, ...newSnake],
-                    food: generateFood(),
+                    food: generateFood([head, ...newSnake]),
                     score: newScore
                 };
             }
@@ -130,7 +130,7 @@ export default function SnakeGame() {
                 snake: newSnake
             };
         });
-    }, [direction]);
+    }, [direction, skipHandler]);
 
     // Game loop
     useEffect(() => {
@@ -140,11 +140,6 @@ export default function SnakeGame() {
     }, [isPlaying, gameOver, moveSnake]);
 
     // Drawing logic
-    const shouldRedraw = useMemo(() => ({
-        snake: gameState.snake,
-        food: gameState.food
-    }), [gameState.snake, gameState.food]);
-
     useEffect(() => {
         const canvas = canvasRef.current;
         const context = canvas?.getContext('2d');
@@ -211,10 +206,10 @@ export default function SnakeGame() {
         };
 
         drawGame();
-    }, [shouldRedraw]);
+    }, [gameState]);
 
     // Handle direction changes
-    const changeDirection = (e: KeyboardEvent) => {
+    const changeDirection = useCallback((e: KeyboardEvent) => {
         if (!isPlaying) return;
 
         switch (e.key) {
@@ -233,12 +228,12 @@ export default function SnakeGame() {
             default:
                 break;
         };
-    };
+    }, [isPlaying, direction]);
 
     useEffect(() => {
         window.addEventListener('keydown', changeDirection);
         return () => window.removeEventListener('keydown', changeDirection);
-    }, [direction, isPlaying]);
+    }, [direction, isPlaying, changeDirection]);
 
     return (
         <div className="flex items-center justify-between h-max bg-gradient-to-r from-gradient-deep-teal/70 to-gradient-green/70 rounded-lg p-5 font-firaCode">
@@ -270,8 +265,8 @@ export default function SnakeGame() {
                 <div className="font-firaCode">
                     <div className='bg-[#011423] bg-opacity-[0.19] rounded-lg p-4 flex items-center flex-col'>
                         <div>
-                            <div className="text-secondary-4">// use keyboard</div>
-                            <div className="text-secondary-4">// arrows to play</div>
+                            <div className="text-secondary-4">{`// use keyboard`}</div>
+                            <div className="text-secondary-4">{`// arrows to play`}</div>
                         </div>
                         <div className="w-fit max-w-[200px] grid grid-cols-3 gap-2 mt-5">
                             <div className="col-start-2">
@@ -293,7 +288,7 @@ export default function SnakeGame() {
                         </div>
                     </div>
                     <div className='mt-6'>
-                        <div className="text-secondary-4">// score: {gameState.score}</div>
+                        <div className="text-secondary-4">{`// score: ${gameState.score}`}</div>
                     </div>
                 </div>
                 <div>

@@ -13,6 +13,8 @@ import Folder3Fill from "./Folder3Fill";
 import ArrowDownSLine from "./ArrowDownSLine";
 import ArrowRightSLine from "./ArrowRightSLine";
 import GitRepositoryFill from "./GitRepositoryFill";
+import MailFill from "./MailFill";
+import PhoneFill from "./PhoneFill";
 
 type IconMapType = {
     [key: string]: FC<SVGProps>;
@@ -32,6 +34,8 @@ const IconMap: IconMapType = {
     ArrowDownSLine,
     ArrowRightSLine,
     GitRepositoryFill,
+    MailFill,
+    PhoneFill,
 };
 
 export type IconName = keyof typeof IconMap;

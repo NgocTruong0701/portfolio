@@ -8,24 +8,23 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
     return (
-        <div className="flex-1 flex font-firaCode text-secondary-4">
+        <div className="flex-1 flex font-firaCode text-secondary-1">
             <Sidebar />
-            {/* Right side - Code Window */}
             <div className="flex-1">
                 <div className="bg-primary-1 rounded-lg p-6">
                     <pre className="text-sm">
                         <code>
-                            /**<br />
-                            * About me<br />
-                            * I have 5 years of experience in web<br />
-                            * development Lorem ipsum etsis amet,<br />
-                            * consectetur adipiscing elit, sed do eiusmod<br />
-                            * tempor incididunt ut labore et dolore<br />
-                            * magna aliqua. Ut enim ad minim veniam,<br />
-                            * quis nostrud exercitation ullamco laboris<br />
-                            * nisi ut aliquip ex ea commodo consequat.<br />
-                            * Duis aute irure dolor in reprehenderit in<br />
-                            */<br />
+                            {`/**
+                            * About me
+                            * I have 5 years of experience in web
+                            * development Lorem ipsum etsis amet,
+                            * consectetur adipiscing elit, sed do eiusmod
+                            * tempor incididunt ut labore et dolore
+                            * magna aliqua. Ut enim ad minim veniam,
+                            * quis nostrud exercitation ullamco laboris
+                            * nisi ut aliquip ex ea commodo consequat.
+                            * Duis aute irure dolor in reprehenderit in
+                            */`}
                         </code>
                     </pre>
                 </div>
