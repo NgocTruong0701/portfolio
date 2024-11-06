@@ -36,3 +36,9 @@ export const INITIAL_FOOD_POSITION: CanvasPosition = {
     x: Math.floor(GRID_COLS / 3),
     y: Math.floor(GRID_ROWS / 3)
 };
+
+export interface GameState {
+    snake: CanvasPosition[];
+    food: CanvasPosition;
+    score: number;
+}

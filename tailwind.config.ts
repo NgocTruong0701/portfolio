@@ -30,6 +30,8 @@ const config: Config = {
           '2': '#43D9AD',  // Mint green
           '3': '#E99287',  // Coral
           '4': '#C98BDF',  // Purple
+          '5': '#3A49A4',
+          '6': '#81A1C1',
         },
         // Links
         'link': '#E5E9F0',
@@ -38,6 +40,9 @@ const config: Config = {
           'blue': '#4D5BCE',
           'green': '#43D9AD',
           'deep-teal': '#175553',
+        },
+        'border': {
+          'gray': '#1E2D3D'
         }
       },
       fontFamily: {

@@ -1,6 +1,6 @@
 'use client'
 import Typewriter from 'typewriter-effect';
-import SnakeGame from './components/game/SnakeGame';
+import SnakeGame from '../components/game/SnakeGame';
 // import { SnakeGame } from './components/game/SnakeGame';
 
 export default function Home() {
@@ -60,12 +60,12 @@ export default function Home() {
         </div>
         <div className="mt-8 text-secondary-1">
           <div>// complete the game to continue</div>
-          <div>// you can also see it on my Github page</div>
+          <div>// you can also see my repositories on my Github page</div>
           <div>
             <span className="text-secondary-3">const </span>
             <span className="text-accent-2">githubLink </span>
             <span className="text-secondary-4">= </span>
-            <span className="text-accent-3">"https://github.com/your-username"</span>
+            <span className="text-accent-3">"https://github.com/NgocTruong0701"</span>
           </div>
         </div>
       </div>
