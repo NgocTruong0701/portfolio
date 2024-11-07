@@ -1,6 +1,7 @@
 'use client'
 import Typewriter from 'typewriter-effect';
 import SnakeGame from '../components/game/SnakeGame';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -64,7 +65,7 @@ export default function Home() {
             <span className="text-secondary-3">const </span>
             <span className="text-accent-2">githubLink </span>
             <span className="text-secondary-4">= </span>
-            <span className="text-accent-3">{`"https://github.com/NgocTruong0701"`}</span>
+            <Link className="text-accent-3" href="https://github.com/NgocTruong0701" target="_blank">{`"https://github.com/NgocTruong0701"`}</Link>
           </div>
         </div>
       </div>
