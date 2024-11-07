@@ -35,7 +35,7 @@ export const Sidebar = () => {
                 ))}
             </div>
             <div className="flex-1">
-                <div className='flex gap-1 items-center border-b py-3 border-border-gray text-secondary-4'>
+                <div className='flex gap-1 items-center border-b py-3 px-3 border-border-gray text-secondary-4'>
                     <Icon name="ArrowDownFill" />
                     personal-info
                 </div>
