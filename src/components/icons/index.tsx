@@ -15,6 +15,7 @@ import ArrowRightSLine from "./ArrowRightSLine";
 import GitRepositoryFill from "./GitRepositoryFill";
 import MailFill from "./MailFill";
 import PhoneFill from "./PhoneFill";
+import ShareBoxLine from "./ShareBoxLine";
 
 type IconMapType = {
     [key: string]: FC<SVGProps>;
@@ -36,6 +37,7 @@ const IconMap: IconMapType = {
     GitRepositoryFill,
     MailFill,
     PhoneFill,
+    ShareBoxLine,
 };
 
 export type IconName = keyof typeof IconMap;

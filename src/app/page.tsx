@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className="flex-1 flex justify-evenly items-center px-12">
+    <div className="flex-1 h-full flex justify-evenly items-center px-12">
       <div className="font-firaCode">
         <div className="text-link">
           <div className="text-lg">
@@ -72,6 +72,6 @@ export default function Home() {
       <div>
         <SnakeGame />
       </div>
-    </main>
+    </div>
   );
 }

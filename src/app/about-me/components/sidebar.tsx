@@ -35,7 +35,7 @@ export const Sidebar = () => {
                 ))}
             </div>
             <div className="flex-1">
-                <div className='flex gap-1 items-center border-b py-3 px-3 border-border-gray text-secondary-4'>
+                <div className='flex gap-1 items-center border-b py-2 px-3 border-border-gray text-secondary-4'>
                     <Icon name="ArrowDownFill" />
                     personal-info
                 </div>
@@ -84,11 +84,11 @@ export const Sidebar = () => {
                     </div>
                 </div>
 
-                <div className='flex gap-1 items-center border-b py-3 border-border-gray text-secondary-4'>
+                <div className='flex gap-1 items-center border-b py-3 px-3 border-border-gray text-secondary-4'>
                     <Icon name="ArrowDownFill" />
                     contacts
                 </div>
-                <div className="space-y-2 px-2 py-5 border-b border-border-gray text-sm">
+                <div className="space-y-2 px-3 py-5 border-b border-border-gray text-sm">
                     <div className="flex justify-content items-center gap-1">
                         <Icon name={mailFill} width="16.22" height="14.6" />
                         ngoctruongf5@gmail.com

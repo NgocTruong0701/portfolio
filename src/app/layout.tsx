@@ -38,12 +38,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`flex flex-col min-h-screen antialiased bg-background text-secondary-1 ${openSans.variable} 
+        className={`flex flex-col h-screen overflow-hidden min-h-screen antialiased bg-background text-secondary-1 ${openSans.variable} 
         ${firaCode.variable} 
         ${openSansItalic.variable} `}
       >
         <Header />
-        {children}
+        <main className="flex-1 h-[calc(100vh-104px)]">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

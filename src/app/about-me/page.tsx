@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Sidebar } from './components/sidebar'
+import Snippet from './components/snippet'
 
 export const metadata: Metadata = {
     title: 'About Me',
@@ -27,38 +28,57 @@ export default function AboutPage() {
     ]
 
     return (
-        <div className="flex-1 flex font-firaCode text-secondary-1">
+        <div className="flex-1 h-full flex font-firaCode text-secondary-1">
             <Sidebar />
             <div className="flex-1 flex">
-                <div className='w-1/2 border-r border-border-gray'>
+                <div className='w-1/2 flex flex-col border-r border-border-gray'>
                     <div className='border-b border-border-gray'>
-                        <div className='flex items-center justify-between px-4 py-3 border-r border-border-gray w-[25%]'>
+                        <div className='flex items-center justify-between px-4 py-2 border-r border-border-gray w-[25%]'>
                             <div>personal-info</div>
                             <div>x</div>
                         </div>
                     </div>
-                    <div className='mx-12 my-5'>
-                        {contents.map((item, index) => {
-                            const number = index + 1;
-                            const digitCount = number.toString().length;
-                            const marginLeft = digitCount > 1 ? `${-0.5 * (digitCount - 1)}em` : '0';
+                    <div className='flex flex-1 h-full'>
+                        <div className='flex-1 mx-12 my-5 h-full'>
+                            {contents.map((item, index) => {
+                                const number = index + 1;
+                                const digitCount = number.toString().length;
+                                const marginLeft = digitCount > 1 ? `${-0.5 * (digitCount - 1)}em` : '0';
 
-                            return (
-                                <div key={index} className='flex items-center gap-12'>
-                                    <div
-                                        className='select-none'
-                                        style={{ marginLeft }}
-                                    >
-                                        {number}
+                                return (
+                                    <div key={index} className='flex items-center gap-12'>
+                                        <div
+                                            className='select-none'
+                                            style={{ marginLeft }}
+                                        >
+                                            {number}
+                                        </div>
+                                        <div className='flex-1'>{item}</div>
                                     </div>
-                                    <div className='flex-1'>{item}</div>
-                                </div>
-                            )
-                        })}
+                                )
+                            })}
+                        </div>
+                        <div className='w-[3%] border-l border-border-gray h-full'>
+                            <div className='bg-secondary-1 h-[1%] mt-2 mx-[2px]'></div>
+                        </div>
                     </div>
                 </div>
                 <div className='flex-1'>
-                    Code snippet showcase:
+                    <div className='border-b border-border-gray'>
+                        <div className='flex items-center justify-between px-4 py-2 border-r border-border-gray w-[25%]'>
+                            <div>code-example</div>
+                            <div>x</div>
+                        </div>
+                    </div>
+                    <div className='mx-12 my-5'>
+                        <div>{`// Code snippet showcase`}</div>
+                        <Snippet>
+                            <h1>Test</h1>
+                        </Snippet>
+                        <Snippet>
+                            <h1>Test2</h1>
+                        </Snippet>
+                    </div>
                 </div>
             </div>
         </div>
