@@ -8,18 +8,27 @@ export const openSansItalic = localFont({
   src: "./fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf",
   variable: "--font-openSans-italic",
   weight: "100 900",
+  display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
 });
 
 export const openSans = localFont({
   src: "./fonts/OpenSans-VariableFont_wdth,wght.ttf",
   variable: "--font-openSans",
   weight: "100 900",
+  display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
 });
 
 export const firaCode = localFont({
   src: "./fonts/FiraCode-VariableFont_wght.ttf",
   variable: "--font-firaCode",
   weight: "300 700",
+  display: 'swap',
+  preload: true,
+  fallback: ['monospace'],
 });
 
 export const metadata: Metadata = {

@@ -1,11 +1,15 @@
+'use client'
 import Image from "next/image";
+import { IGist, IUser } from "../page";
+import { Highlight, themes } from "prism-react-renderer";
 
 interface ISnippetProps {
-    children: React.ReactNode;
+    user: IUser,
+    code: IGist
 }
 
-export default function Snippet({ children }: ISnippetProps) {
-    const avatar = "https://avatars.githubusercontent.com/u/92860999?v=4";
+export default function Snippet({ user, code }: ISnippetProps) {
+    const avatar = user.avatar;
     return (
         <div className="py-4">
             <div className="flex items-center gap-3">
@@ -18,7 +22,7 @@ export default function Snippet({ children }: ISnippetProps) {
                 />
                 <div className="flex-1">
                     <div className="flex items-center justify-between">
-                        <div className="text-[#2563eb]">@NgocTruong0701</div>
+                        <div className="text-[#2563eb]">@{user.name}</div>
                         <div className="flex items-center gap-4 text-[#64748b]">
                             <div className="flex items-center gap-2">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +43,21 @@ export default function Snippet({ children }: ISnippetProps) {
             </div>
             <div className="my-3 border border-border-gray rounded-lg min-h-16 bg-primary-3">
                 <div className="p-4">
-                    {children}
+                    <Highlight
+                        theme={themes.nightOwl} code={code.files[0].content} language="javascript"
+                    >
+                        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+                            <pre className={`${className} p-4 rounded-lg`} style={style}>
+                                {tokens.map((line, i) => (
+                                    <div {...getLineProps({ line, key: i })}>
+                                        {line.map((token, key) => (
+                                            <span {...getTokenProps({ token, key })} />
+                                        ))}
+                                    </div>
+                                ))}
+                            </pre>
+                        )}
+                    </Highlight>
                 </div>
             </div>
         </div>

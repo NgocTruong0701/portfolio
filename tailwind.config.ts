@@ -23,6 +23,7 @@ const config: Config = {
           '3': '#4D5BCE',  // Purple blue
           '4': '#FFFFFF',  // White
           '5': '#01080E',
+          '6': '#1C2B3A',
         },
         // Accent colors
         'accent': {
