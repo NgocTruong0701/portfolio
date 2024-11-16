@@ -116,16 +116,17 @@ button.addEventListener('click', () => {
                             <Highlight
                                 theme={themes.nightOwl} code={codeShow} language="javascript"
                             >
-                                {({ className, style, tokens, getLineProps, getTokenProps }) => (
+                                {({ className, style, tokens, getTokenProps }) => (
                                     <pre className={`${className} p-4 rounded-lg`} style={style}>
                                         {tokens.map((line, i) => (
-                                            <div {...getLineProps({ line, key: i })}>
+                                            <div key={i} {...line}>
                                                 <span className="text-gray-500 mr-4 inline-block w-6 text-right">
                                                     {i + 1}
                                                 </span>
-                                                {line.map((token, key) => (
-                                                    <span {...getTokenProps({ token, key })} />
-                                                ))}
+                                                {line.map((token, key) => {
+                                                    const tokenProps = getTokenProps({ token });
+                                                    return <span key={key} {...tokenProps} />;
+                                                })}
                                             </div>
                                         ))}
                                     </pre>
@@ -138,6 +139,6 @@ button.addEventListener('click', () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Sidebar } from './components/sidebar'
 import Snippet from './components/snippet'
-import { Highlight, themes } from 'prism-react-renderer';
 
 export const metadata: Metadata = {
     title: 'About Me',
@@ -63,7 +62,7 @@ export default async function AboutPage() {
             const data = await response.json();
 
             const gistDetails = await Promise.all(
-                data.map(async (gist: any) => {
+                data.map(async (gist: IGist) => {
                     const detailResponse = await fetch(`https://api.github.com/gists/${gist.id}`, {
                         headers: {
                             'Authorization': `Bearer ${process.env.NEXT_GITHUB_API}`,
@@ -73,7 +72,7 @@ export default async function AboutPage() {
                     });
                     const detailData = await detailResponse.json();
 
-                    const files = Object.entries(detailData.files).map(([filename, file]: [string, any]) => ({
+                    const files = Object.entries(detailData.files as Record<string, IFile>).map(([filename, file]: [string, IFile]) => ({
                         filename,
                         content: file.content
                     }));

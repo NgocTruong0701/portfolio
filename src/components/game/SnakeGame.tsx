@@ -247,7 +247,7 @@ export default function SnakeGame() {
                         start-game
                     </button>
                 </div>)}
-                {gameOver && (<div className="absolute bottom-6 left-1/2 transform -translate-x-[60%]">
+                {gameOver && (<div className="absolute bottom-40 left-1/2 transform -translate-x-[60%]">
                     <div
                         className="mt-4 bg-primary-2 text-accent-2 px-4 py-2 rounded-lg transition-colors text-center text-xl"
                     >
