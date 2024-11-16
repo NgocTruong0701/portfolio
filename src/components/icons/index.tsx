@@ -16,6 +16,19 @@ import GitRepositoryFill from "./GitRepositoryFill";
 import MailFill from "./MailFill";
 import PhoneFill from "./PhoneFill";
 import ShareBoxLine from "./ShareBoxLine";
+import Html from "./Html";
+import CSS from "./CSS";
+import JS from "./JS";
+import Nodejs from "./Nodejs";
+import Reactjs from "./Reactjs";
+import Angular from "./Angular";
+import VueJs from "./VueJs";
+import CSharp from "./CSharp";
+import TailwindCss from "./TailwindCss";
+import Nextjs from "./Nextjs";
+import Nestjs from "./Nestjs";
+import TypeScript from "./TypeScript";
+import DotNet from "./DotNet";
 
 type IconMapType = {
     [key: string]: FC<SVGProps>;
@@ -38,6 +51,19 @@ const IconMap: IconMapType = {
     MailFill,
     PhoneFill,
     ShareBoxLine,
+    Html,
+    CSS,
+    JS,
+    Nodejs,
+    Reactjs,
+    Angular,
+    VueJs,
+    CSharp,
+    TailwindCss,
+    Nextjs,
+    Nestjs,
+    TypeScript,
+    DotNet,
 };
 
 export type IconName = keyof typeof IconMap;

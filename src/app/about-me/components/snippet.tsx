@@ -11,7 +11,7 @@ interface ISnippetProps {
 export default function Snippet({ user, code }: ISnippetProps) {
     const avatar = user.avatar;
     return (
-        <div className="py-4">
+        <div className="py-2">
             <div className="flex items-center gap-3">
                 <Image
                     alt="avatar"
@@ -48,13 +48,23 @@ export default function Snippet({ user, code }: ISnippetProps) {
                     >
                         {({ className, style, tokens, getLineProps, getTokenProps }) => (
                             <pre className={`${className} p-4 rounded-lg`} style={style}>
-                                {tokens.map((line, i) => (
-                                    <div {...getLineProps({ line, key: i })}>
-                                        {line.map((token, key) => (
-                                            <span {...getTokenProps({ token, key })} />
-                                        ))}
-                                    </div>
-                                ))}
+                                {tokens.map((line, i) => {
+                                    const lineProps = getLineProps({ line });
+                                    return (
+                                        <div
+                                            key={i}
+                                            {...lineProps}
+                                            style={{
+                                                minWidth: 'fit-content',
+                                            }}
+                                        >
+                                            {line.map((token, key) => {
+                                                const tokenProps = getTokenProps({ token });
+                                                return <span key={key} {...tokenProps} />;
+                                            })}
+                                        </div>
+                                    );
+                                })}
                             </pre>
                         )}
                     </Highlight>

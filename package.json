@@ -10,6 +10,9 @@
     "deploy": "next build && firebase deploy"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.1.7",
     "next": "15.0.2",
     "prism-react-renderer": "^2.4.0",
     "react": "19.0.0-rc-02c0e824-20241028",
