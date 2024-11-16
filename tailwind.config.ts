@@ -33,6 +33,7 @@ const config: Config = {
           '4': '#C98BDF',  // Purple
           '5': '#3A49A4',
           '6': '#81A1C1',
+          '7': '#5565E8',
         },
         // Links
         'link': '#E5E9F0',

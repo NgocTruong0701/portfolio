@@ -119,7 +119,7 @@ button.addEventListener('click', () => {
                                 {({ className, style, tokens, getTokenProps }) => (
                                     <pre className={`${className} p-4 rounded-lg`} style={style}>
                                         {tokens.map((line, i) => (
-                                            <div key={i} {...line}>
+                                            <div key={i}>
                                                 <span className="text-gray-500 mr-4 inline-block w-6 text-right">
                                                     {i + 1}
                                                 </span>

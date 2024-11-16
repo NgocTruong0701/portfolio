@@ -25,6 +25,10 @@ import Angular from "./Angular";
 import VueJs from "./VueJs";
 import CSharp from "./CSharp";
 import TailwindCss from "./TailwindCss";
+import Nextjs from "./Nextjs";
+import Nestjs from "./Nestjs";
+import TypeScript from "./TypeScript";
+import DotNet from "./DotNet";
 
 type IconMapType = {
     [key: string]: FC<SVGProps>;
@@ -55,7 +59,11 @@ const IconMap: IconMapType = {
     Angular,
     VueJs,
     CSharp,
-    TailwindCss
+    TailwindCss,
+    Nextjs,
+    Nestjs,
+    TypeScript,
+    DotNet,
 };
 
 export type IconName = keyof typeof IconMap;

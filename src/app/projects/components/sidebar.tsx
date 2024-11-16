@@ -17,7 +17,7 @@ export const Sidebar = ({ tags, selectedTags, onTagToggle }: ISideProps) => {
                     <Icon name="ArrowDownFill" />
                     projects
                 </div>
-                <div className="px-4 py-5">
+                <div className="px-4 py-3">
                     {tags.map((item) => (
                         <ModernCheckbox
                             key={item.id}
