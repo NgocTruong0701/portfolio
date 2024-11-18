@@ -20,7 +20,7 @@ export default function Home() {
       md:py-0
     "
     >
-      <div className="font-firaCode">
+      <div className="font-firaCode max-md:space-y-60">
         <div className="text-link">
           <div className="text-xl md:text-lg max-md:mb-3 md:mb-2">
             <Typewriter
@@ -72,7 +72,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="max-md:mt-[70%] md:mt-24 text-secondary-1">
+        <div className="md:mt-24 text-secondary-1">
           <div className='hidden md:block md:mb-2'>{`// complete the game to continue`}</div>
           <div className='hidden md:block md:mb-2'>{`// you can also see my repositories on my Github page`}</div>
           <div className='md:hidden mb-4'>{`// find my profile on Github:`}</div>

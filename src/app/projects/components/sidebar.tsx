@@ -1,6 +1,6 @@
 'use client'
 import Icon from "@/components/icons";
-import { IProject, ITag } from "../page";
+import { ITag } from "../page";
 import { ModernCheckbox } from "./modern-checkbox";
 
 interface ISideProps {

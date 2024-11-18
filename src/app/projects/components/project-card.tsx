@@ -8,7 +8,7 @@ export const ProjectCard = ({ project, index }: { project: IProject, index: numb
         <div className="grid grid-rows-[auto_1fr]">
             <div className="min-h-[40px]">
                 <h3 className="text-lg font-semibold mb-2">
-                    <span className="text-accent-7">Project {index + 1}</span> // {project.title}
+                    <span className="text-accent-7">Project {index + 1}</span> {`// ${project.title}`}
                 </h3>
             </div>
             <div className="border border-border-gray rounded-xl hover:border-secondary-1 transition-colors flex flex-col">

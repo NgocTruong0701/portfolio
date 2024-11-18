@@ -45,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-screen">
       <body
         className={`
           flex 
@@ -64,7 +64,7 @@ export default function RootLayout({
         <Header />
         <main className="
           flex-1
-          h-[calc(100%-52px)]
+          h-[calc(100vh-52px)]
           md:h-[calc(100vh-104px)]
           overflow-y-auto
           md:overflow-hidden
