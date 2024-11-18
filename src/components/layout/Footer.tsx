@@ -15,8 +15,8 @@ export default function Footer() {
 
     return (
         <footer className="flex justify-between items-center h-[52px] font-firaCode border-t border-gray-800">
-            <div className="flex h-full">
-                <div className="flex items-center px-4 h-full border-r border-gray-800">
+            <div className="flex h-full max-md:flex-1">
+                <div className="flex items-center px-4 h-full border-r border-gray-800 max-md:flex-1">
                     find me in:
                 </div>
                 <div className="flex h-full">
@@ -32,9 +32,9 @@ export default function Footer() {
                     ))}
                 </div>
             </div>
-            <div>
-                <Link href="https://github.com/NgocTruong0701" target="_blank" className="flex items-center px-4 h-full hover:text-secondary-4">
-                    <span>@NgocTruong0701</span>
+            <div className="h-full border-l border-border-gray">
+                <Link href="https://github.com/NgocTruong0701" target="_blank" className="flex items-center px-6 h-full hover:text-secondary-4">
+                    <span className="hidden md:block">@NgocTruong0701</span>
                     <Icon name="GithubFill" className="w-5 h-5 ml-2" />
                 </Link>
             </div>
