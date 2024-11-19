@@ -43,31 +43,31 @@ export default function Header() {
 
             {/* Mobile Menu Overlay */}
             {isMenuOpen && (
-                <div className="md:hidden fixed inset-0 bg-background z-50 font-firaCode">
-                    <div className="flex items-center justify-between h-[52px] border-b border-border-gray px-4">
-                        <span className="text-secondary-4">le ngoc truong</span>
-                        <button onClick={() => setIsMenuOpen(false)}>
-                            <Icon name="Close" className="w-6 h-6 text-secondary-1" />
-                        </button>
-                    </div>
-                    <nav>
-                        <ul>
-                            {(leftNavItems.concat(rightNavItems)).map((item, index) => (
-                                <li key={index} className="border-b border-border-gray px-4 py-3">
-                                    <Link
-                                        href={item.link}
-                                        className="text-secondary-1 hover:text-secondary-4"
-                                        onClick={() => setIsMenuOpen(false)}
-                                    >
-                                        {item.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                        <div className="absolute bottom-8 left-4">
-                            <Footer />
+                <div className="md:hidden fixed inset-0 bg-background z-50 font-firaCode flex flex-col justify-between">
+                    <div>
+                        <div className="flex items-center justify-between h-[52px] border-b border-border-gray px-4">
+                            <span className="text-secondary-4">le ngoc truong</span>
+                            <button onClick={() => setIsMenuOpen(false)}>
+                                <Icon name="Close" className="w-6 h-6 text-secondary-1" />
+                            </button>
                         </div>
-                    </nav>
+                        <nav>
+                            <ul>
+                                {(leftNavItems.concat(rightNavItems)).map((item, index) => (
+                                    <li key={index} className="border-b border-border-gray px-4 py-3">
+                                        <Link
+                                            href={item.link}
+                                            className="text-secondary-1 hover:text-secondary-4"
+                                            onClick={() => setIsMenuOpen(false)}
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
+                    </div>
+                    <Footer />
                 </div>
             )}
 
