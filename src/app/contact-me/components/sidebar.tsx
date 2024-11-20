@@ -35,7 +35,7 @@ export const Sidebar = () => {
     return (
         <div className="w-full md:w-[300px] md:min-w-[250px] border-r border-border-gray">
             <div className="flex-1">
-                <div className="text-secondary-4 py-5 px-5">
+                <div className="md:hidden text-secondary-4 py-5 px-5">
                     _contact_me
                 </div>
                 <div className='flex gap-1 items-center md:border-b py-2 px-3 max-md:bg-border-gray max-md:mb-1 border-border-gray text-secondary-4'>

@@ -100,7 +100,7 @@ button.addEventListener('click', () => {
                                 <textarea
                                     id="message"
                                     name="message"
-                                    rows={5}
+                                    rows={7}
                                     className="mt-2 w-full px-3 py-1 bg-primary-3 border border-border-gray focus:border-secondary-1 rounded-lg resize-none"
                                     value={formData.message}
                                     onChange={handleTextAreaChange}

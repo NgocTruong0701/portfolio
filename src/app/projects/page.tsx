@@ -82,7 +82,7 @@ export default function Projects() {
     );
 
     return (
-        <div className="flex h-full font-firaCode text-secondary-1">
+        <div className="flex max-md:flex-col h-full font-firaCode text-secondary-1">
             <Sidebar
                 tags={listTag}
                 selectedTags={selectedTags}
@@ -90,7 +90,7 @@ export default function Projects() {
             />
             <div className="flex-1">
                 <div className='w-full flex flex-col border-r border-border-gray h-full'>
-                    <div className='border-b border-border-gray'>
+                    <div className='hidden md:block border-b border-border-gray'>
                         <div className='flex items-center justify-between px-4 py-2 border-r border-border-gray min-w-48 max-w-fit gap-4'>
                             {selectedTags.length > 0 ? (
                                 <div className="flex items-center gap-2">
@@ -107,15 +107,31 @@ export default function Projects() {
                             <span className="ml-auto cursor-pointer">×</span>
                         </div>
                     </div>
-                    <div className='flex flex-1 overflow-auto scrollbar-hide'>
-                        <div className='flex-1 mx-28 my-5 mt-[10%]'>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <div className="md:hidden mt-2 text-secondary-4 py-5 px-5 w-full">
+                        <span className="flex flex-wrap items-center gap-2">
+                            <span>{`_projects`}</span>
+                            {selectedTags.length > 0 && (
+                                <>
+                                    <span className="text-secondary-1">/</span>
+                                    {selectedTags.map((tag, index) => (
+                                        <span key={tag} className="text-secondary-1">
+                                            {tag}
+                                            {index < selectedTags.length - 1 && "; "}
+                                        </span>
+                                    ))}
+                                </>
+                            )}
+                        </span>
+                    </div>
+                    <div className='md:flex flex-1 overflow-auto scrollbar-hide'>
+                        <div className='flex-1 max-md:mx-5 md:mx-28 flex items-center'>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
                                 {filteredProjects.map((project, index) => (
                                     <ProjectCard key={index} project={project} index={index} />
                                 ))}
                             </div>
                         </div>
-                        <div className='w-6 border-l border-border-gray h-full'>
+                        <div className='hidden md:block w-6 border-l border-border-gray h-full'>
                             <div className='bg-secondary-1 h-[1%] mt-2 mx-[2px]'></div>
                         </div>
                     </div>
