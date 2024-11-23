@@ -11,14 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt update && sudo apt upgrade -y && sudo apt install curl -y
-      - run: |
-          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-      - run: nvm install --lts && nvm use --lts && node -v && npm -v
-      - run: npm install --legacy-peer-deps && npm ci && npm run build
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.18.1'
+
+      - run: sudo apt update && sudo apt upgrade -y
+      - run: node -v && npm -v
+      - run: npm install --legacy-peer-deps && npm run build
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
