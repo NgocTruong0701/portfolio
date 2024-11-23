@@ -45,14 +45,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-screen">
       <body
-        className={`flex flex-col h-screen overflow-hidden min-h-screen antialiased bg-background text-secondary-1 ${openSans.variable} 
-        ${firaCode.variable} 
-        ${openSansItalic.variable} `}
+        className={`
+          flex 
+          flex-col 
+          min-h-screen
+          h-full
+          bg-background 
+          text-secondary-1 
+          antialiased
+          md:overflow-hidden
+          ${openSans.variable}
+          ${firaCode.variable}
+          ${openSansItalic.variable}
+        `}
       >
         <Header />
-        <main className="flex-1 h-[calc(100vh-104px)]">
+        <main className="
+          flex-1
+          h-[calc(100vh-52px)]
+          md:h-[calc(100vh-104px)]
+          overflow-y-auto
+          md:overflow-hidden
+        ">
           {children}
         </main>
         <Footer />

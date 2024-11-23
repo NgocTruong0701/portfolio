@@ -11,7 +11,7 @@ interface ISnippetProps {
 export default function Snippet({ user, code }: ISnippetProps) {
     const avatar = user.avatar;
     return (
-        <div className="py-2">
+        <div className="w-full max-w-4xl mx-auto py-2">
             <div className="flex items-center gap-3">
                 <Image
                     alt="avatar"
@@ -30,7 +30,7 @@ export default function Snippet({ user, code }: ISnippetProps) {
                                 </svg>
                                 details
                             </div>
-                            <div className="flex items-center gap-2">
+                            <div className="hidden md:block flex items-center gap-2">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.43408 2.76409C7.63209 2.24194 8.36791 2.24194 8.56592 2.76409L9.61159 5.31282C9.69742 5.52358 9.89745 5.66473 10.1242 5.67659L12.8351 5.84362C13.3957 5.87801 13.6271 6.57538 13.1889 6.93487L11.0704 8.69375C10.8951 8.84031 10.8181 9.07301 10.8686 9.29567L11.4419 11.9641C11.5554 12.5127 10.9574 12.9375 10.4703 12.6473L8.1751 11.2446C7.98009 11.1249 7.7339 11.1249 7.5389 11.2446L5.24369 12.6473C4.75657 12.9375 4.15863 12.5127 4.27206 11.9641L4.84537 9.29567C4.89591 9.07301 4.81893 8.84031 4.64362 8.69375L2.52506 6.93487C2.08691 6.57538 2.31831 5.87801 2.87889 5.84362L5.58983 5.67659C5.81655 5.66473 6.01658 5.52358 6.10241 5.31282L7.14808 2.76409Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
@@ -41,30 +41,40 @@ export default function Snippet({ user, code }: ISnippetProps) {
                     <div className="text-[#64748b] text-sm">Created 5 months ago</div>
                 </div>
             </div>
-            <div className="my-3 border border-border-gray rounded-lg min-h-16 bg-primary-3">
-                <div className="p-4">
+            <div className="my-3 border border-border-gray rounded-lg overflow-hidden bg-[#011221]">
+                <div className="overflow-x-auto w-full">
                     <Highlight
-                        theme={themes.nightOwl} code={code.files[0].content} language="javascript"
+                        theme={{
+                            ...themes.nightOwl,
+                            plain: {
+                                ...themes.nightOwl.plain,
+                                backgroundColor: '#011221'
+                            }
+                        }}
+                        code={code.files[0].content}
+                        language="javascript"
                     >
-                        {({ className, style, tokens, getLineProps, getTokenProps }) => (
-                            <pre className={`${className} p-4 rounded-lg`} style={style}>
-                                {tokens.map((line, i) => {
-                                    const lineProps = getLineProps({ line });
-                                    return (
+                        {({ style, tokens, getLineProps, getTokenProps }) => (
+                            <pre
+                                className="p-4 m-0 w-full overflow-x-auto"
+                                style={{
+                                    ...style,
+                                    backgroundColor: '#011221',
+                                }}
+                            >
+                                <code className="block w-full">
+                                    {tokens.map((line, i) => (
                                         <div
                                             key={i}
-                                            {...lineProps}
-                                            style={{
-                                                minWidth: 'fit-content',
-                                            }}
+                                            {...getLineProps({ line })}
+                                            className="whitespace-pre"
                                         >
-                                            {line.map((token, key) => {
-                                                const tokenProps = getTokenProps({ token });
-                                                return <span key={key} {...tokenProps} />;
-                                            })}
+                                            {line.map((token, key) => (
+                                                <span key={key} {...getTokenProps({ token })} />
+                                            ))}
                                         </div>
-                                    );
-                                })}
+                                    ))}
+                                </code>
                             </pre>
                         )}
                     </Highlight>

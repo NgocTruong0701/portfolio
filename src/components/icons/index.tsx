@@ -29,6 +29,8 @@ import Nextjs from "./Nextjs";
 import Nestjs from "./Nestjs";
 import TypeScript from "./TypeScript";
 import DotNet from "./DotNet";
+import Menu from "./Menu";
+import Close from "./Close";
 
 type IconMapType = {
     [key: string]: FC<SVGProps>;
@@ -64,6 +66,8 @@ const IconMap: IconMapType = {
     Nestjs,
     TypeScript,
     DotNet,
+    Menu,
+    Close,
 };
 
 export type IconName = keyof typeof IconMap;

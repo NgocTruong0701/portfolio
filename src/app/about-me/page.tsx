@@ -50,6 +50,12 @@ export default async function AboutPage() {
         "*/",
     ];
 
+    const contentMobile = `I have 5 years of experience in web development lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                        Excepteur sint occaecat officia deserunt mollit anim id est laborum.`;
+
     const fetchGists = async () => {
         try {
             const response = await fetch('https://api.github.com/gists', {
@@ -102,18 +108,18 @@ export default async function AboutPage() {
     const result = await fetchGists();
 
     return (
-        <div className="flex-1 h-full flex font-firaCode text-secondary-1">
+        <div className="flex-1 h-full md:flex font-firaCode text-secondary-1">
             <Sidebar />
-            <div className="flex-1 flex">
-                <div className='w-[51%] flex flex-col border-r border-border-gray'>
-                    <div className='border-b border-border-gray'>
+            <div className="md:flex-1 md:flex">
+                <div className='w-full md:w-[51%] flex flex-col border-r border-border-gray'>
+                    <div className='hidden md:block border-b border-border-gray'>
                         <div className='flex items-center justify-between px-4 py-2 border-r border-border-gray w-48'>
                             <div>personal-info</div>
                             <div>x</div>
                         </div>
                     </div>
-                    <div className='flex flex-1 h-full'>
-                        <div className='flex-1 mx-12 my-5 h-full'>
+                    <div className='hidden md:flex md:flex-1 h-full'>
+                        <div className='md:flex-1 md:mx-12 md:my-5 h-full'>
                             {contents.map((item, index) => {
                                 const number = index + 1;
                                 const digitCount = number.toString().length;
@@ -136,16 +142,20 @@ export default async function AboutPage() {
                             <div className='bg-secondary-1 h-[1%] mt-2 mx-[2px]'></div>
                         </div>
                     </div>
+                    <div className='block md:hidden mx-5 my-5'>
+                        <div className='text-secondary-4 mb-3'>{`// personal-info`} <span className='text-secondary-1 ml-1'>/ bio</span></div>
+                        <div>{contentMobile}</div>
+                    </div>
                 </div>
                 <div className='flex-1'>
-                    <div className='border-b border-border-gray'>
+                    <div className='hidden md:block border-b border-border-gray'>
                         <div className='flex items-center justify-between px-4 py-2 border-r border-border-gray w-44'>
                             <div>code-example</div>
                             <div>x</div>
                         </div>
                     </div>
-                    <div className='mx-12 my-5'>
-                        <div>{`// Code snippet showcase`}</div>
+                    <div className='mx-5 my-5 md:mx-12'>
+                        <div className='max-md:text-secondary-4 mb-5'>{`// Code snippet showcase`}</div>
                         {result?.code.map((item, index) => (
                             <Snippet key={index} user={result.user} code={item} />
                         ))}

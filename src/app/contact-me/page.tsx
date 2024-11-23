@@ -61,18 +61,18 @@ button.addEventListener('click', () => {
     `.trim();
 
     return (
-        <div className="flex-1 h-full flex font-firaCode text-secondary-1">
+        <div className="flex-1 h-full flex max-md:flex-col font-firaCode text-secondary-1">
             <Sidebar />
             <div className="flex-1 flex flex-col border-r border-border-gray">
-                <div className='border-b border-border-gray'>
+                <div className='hidden md:block border-b border-border-gray'>
                     <div className='flex items-center justify-between px-4 py-2 border-r border-border-gray w-[12%]'>
                         <div>contacts</div>
                         <div>x</div>
                     </div>
                 </div>
                 <div className='flex-1 h-full flex'>
-                    <div className="w-[45%] border-r border-border-gray flex items-center">
-                        <form className="mx-auto space-y-4 w-[60%]">
+                    <div className="w-full md:w-[45%] md:min-w-[45%] border-r border-border-gray flex items-center justify-center">
+                        <form className="space-y-4">
                             <div>
                                 <label htmlFor="name">_name:</label>
                                 <input
@@ -100,7 +100,7 @@ button.addEventListener('click', () => {
                                 <textarea
                                     id="message"
                                     name="message"
-                                    rows={5}
+                                    rows={7}
                                     className="mt-2 w-full px-3 py-1 bg-primary-3 border border-border-gray focus:border-secondary-1 rounded-lg resize-none"
                                     value={formData.message}
                                     onChange={handleTextAreaChange}
@@ -111,8 +111,8 @@ button.addEventListener('click', () => {
                             </div>
                         </form>
                     </div>
-                    <div className="flex-1 flex items-center">
-                        <div className="mx-auto space-y-4 w-[60%] flex-1">
+                    <div className="hidden flex-1 md:flex items-center">
+                        <div className="mx-auto">
                             <Highlight
                                 theme={themes.nightOwl} code={codeShow} language="javascript"
                             >
@@ -134,7 +134,7 @@ button.addEventListener('click', () => {
                             </Highlight>
                         </div>
                     </div>
-                    <div className='w-[1.5%] border-l border-border-gray h-full'>
+                    <div className='hidden md:block w-[1.5%] border-l border-border-gray h-full'>
                         <div className='bg-secondary-1 h-[1%] mt-2 mx-[2px]'></div>
                     </div>
                 </div>

@@ -5,10 +5,24 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex-1 h-full flex justify-evenly items-center px-12">
-      <div className="font-firaCode">
+    <div className="
+      flex-1 
+      min-h-full
+      flex 
+      flex-col
+      md:flex-row 
+      justify-center
+      md:justify-evenly 
+      items-center 
+      px-6
+      md:px-12
+      py-8
+      md:py-0
+    "
+    >
+      <div className="font-firaCode max-md:space-y-60">
         <div className="text-link">
-          <div className="text-lg">
+          <div className="text-xl md:text-lg max-md:mb-3 md:mb-2">
             <Typewriter
               onInit={(typewriter) => {
                 typewriter
@@ -21,7 +35,7 @@ export default function Home() {
               }}
             />
           </div>
-          <div className="text-3xl">
+          <div className="md:mb-2 max-md:mb-3 text-6xl md:text-3xl">
             <Typewriter
               onInit={(typewriter) => {
                 typewriter
@@ -35,7 +49,7 @@ export default function Home() {
               }}
             />
           </div>
-          <div className="text-secondary-3 text-xl">
+          <div className="text-accent-2 md:text-secondary-3 text-xl">
             <Typewriter
               onInit={(typewriter) => {
                 typewriter
@@ -58,9 +72,10 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="mt-8 text-secondary-1">
-          <div>{`// complete the game to continue`}</div>
-          <div>{`// you can also see my repositories on my Github page`}</div>
+        <div className="md:mt-24 text-secondary-1">
+          <div className='hidden md:block md:mb-2'>{`// complete the game to continue`}</div>
+          <div className='hidden md:block md:mb-2'>{`// you can also see my repositories on my Github page`}</div>
+          <div className='md:hidden mb-4'>{`// find my profile on Github:`}</div>
           <div>
             <span className="text-secondary-3">const </span>
             <span className="text-accent-2">githubLink </span>
@@ -69,7 +84,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div>
+      <div className='hidden md:block'>
         <SnakeGame />
       </div>
     </div>
