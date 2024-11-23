@@ -15,9 +15,11 @@ jobs:
       - uses: actions/checkout@v4
       - run: sudo apt update && sudo apt upgrade -y && sudo apt install curl -y
       - run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash && source ~/.bashrc
-      - run: export NVM_DIR="$HOME/.nvm"
-      - run: [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-      - run: [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+      - run: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
       - run: nvm install --lts && nvm use --lts && node -v && npm -v
       - run: npm install --legacy-peer-deps && npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
