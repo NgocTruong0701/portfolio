@@ -10,9 +10,11 @@ export const Sidebar = () => {
     ];
 
     const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({
-        bio: false,
+        bio: true,
         interests: false,
-        education: false
+        education: false,
+        contacts: false,
+        personalInfo: true,
     });
 
     const nameFolder = "Folder3Fill";
@@ -28,18 +30,24 @@ export const Sidebar = () => {
     };
 
     return (
-        <div className="w-[300px] min-w-[300px] border-r border-border-gray flex ">
-            <div className='w-3/12 border-r border-border-gray'>
+        <div className="w-full md:w-[300px] md:min-w-[250px] border-r border-border-gray md:flex ">
+            <div className="md:hidden text-secondary-4 py-5 px-5">
+                _about-me
+            </div>
+            <div className='w-3/12 border-r border-border-gray hidden md:block'>
                 {listIcon.map((item, index) => (
                     <Icon key={index} name={item} className="mx-auto text-secondary-1 my-7" />
                 ))}
             </div>
             <div className="flex-1">
-                <div className='flex gap-1 items-center border-b py-2 px-3 border-border-gray text-secondary-4'>
-                    <Icon name="ArrowDownFill" />
+                <div
+                    onClick={() => toggleExpand('personalInfo')}
+                    className='flex gap-1 items-center max-md:bg-border-gray max-md:mb-1 md:border-b py-2 px-3 border-border-gray text-secondary-4'
+                >
+                    <Icon name={expandedItems.personalInfo ? "ArrowDownFill" : "ArrowRightFill"} />
                     personal-info
                 </div>
-                <div className="space-y-2 px-4 py-5 border-b border-border-gray">
+                <div className={`space-y-2 px-4 py-4 md:border-b border-border-gray ${expandedItems.personalInfo ? 'block' : 'hidden'}`}>
                     <div
                         className="flex items-center gap-2 cursor-pointer"
                         onClick={() => toggleExpand('bio')}
@@ -84,11 +92,14 @@ export const Sidebar = () => {
                     </div>
                 </div>
 
-                <div className='flex gap-1 items-center border-b py-3 px-3 border-border-gray text-secondary-4'>
-                    <Icon name="ArrowDownFill" />
+                <div
+                    onClick={() => toggleExpand('contacts')}
+                    className='flex gap-1 items-center max-md:bg-border-gray max-md:mb-1 md:border-b py-2 px-3 border-border-gray text-secondary-4'
+                >
+                    <Icon name={expandedItems.contacts ? "ArrowDownFill" : "ArrowRightFill"} />
                     contacts
                 </div>
-                <div className="space-y-2 px-3 py-5 border-b border-border-gray text-sm">
+                <div className={`space-y-2 px-3 py-5 border-b border-border-gray text-sm ${expandedItems.contacts ? 'block' : 'hidden'}`}>
                     <div className="flex justify-content items-center gap-1">
                         <Icon name={mailFill} width="16.22" height="14.6" />
                         ngoctruongf5@gmail.com
