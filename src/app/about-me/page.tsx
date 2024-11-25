@@ -33,28 +33,32 @@ interface IResult {
 export default async function AboutPage() {
     const contents = [
         "/**",
-        "* About me",
-        "* I have 5 years of experience in web",
-        "* development Lorem ipsum etsis amet,",
-        "* consectetur adipiscing elit, sed do eiusmod",
-        "* tempor incididunt ut labore et dolore",
-        "* magna aliqua. Ut enim ad minim veniam,",
-        "* quis nostrud exercitation ullamco laboris",
-        "* nisi ut aliquip ex ea commodo consequat.",
-        "* Duis aute irure dolor in reprehenderit in",
+        "* Contact Me",
+        "* I have 2 years of experience in web app and application developer.",
+        "* I have experience in both backend and frontend development.",
+        "* Programming languages I am proficient in: C#, JavaScript, TypeScript, Python, Java.",
+        "* Frameworks I am experienced with: .NET, ASP.NET, NestJS, ExpressJS, ReactJS, React Framework, Next.js.",
+        "* Cloud platforms I have worked with:",
+        "* - AWS (S3)",
+        "* - Google Cloud (Cloud Run, App Engine, Cloud Bucket, Firebase Authentication, Firebase Deploy).",
+        "* I also have experience in implementing CI/CD pipelines using GitHub Actions.",
         "*",
-        "* Duis aute irure dolor in reprehenderit in",
-        "* voluptate velit esse cillum dolore eu fugiat",
-        "* nulla pariatur. Excepteur sint occaecat",
-        "* officia deserunt mollit anim id est laborum.",
+        "* Feel free to reach out if you have opportunities or projects in need of:",
+        "* - Building scalable web and mobile applications.",
+        "* - Developing full-stack solutions with modern frameworks.",
+        "* - Cloud integration and deployment.",
+        "* - Setting up CI/CD pipelines for efficient development workflows.",
+        "*",
+        "* Looking forward to connecting with you!",
         "*/",
     ];
 
-    const contentMobile = `I have 5 years of experience in web development lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat officia deserunt mollit anim id est laborum.`;
+    const contentMobile = `I am a web app and application developer with 2 years of experience in both backend and frontend development. 
+        Proficient in C#, JavaScript, TypeScript, Python, and Java, I specialize in modern frameworks like .NET, ASP.NET, NestJS, ReactJS, and Next.js. 
+        I have hands-on experience with cloud platforms such as AWS (S3) and Google Cloud (Cloud Run, App Engine, Firebase). 
+        Additionally, I implement CI/CD pipelines using GitHub Actions to ensure efficient workflows. 
+        Feel free to reach out for opportunities involving scalable applications, cloud integration, or full-stack solutions.`;
+
 
     const fetchGists = async () => {
         try {
